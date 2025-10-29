@@ -1,1 +1,23 @@
-    Bazinga
+
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: django-app
+    labels:
+      app: django
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: django
+    template:
+      metadata:
+        labels:
+          app: django
+      spec:
+        containers:
+          - name: django
+            image: falace/django-app:ffc7d16e6e56c9f2cf81a03f308639e222676d94
+            ports:
+            - containerPort: 80
+
